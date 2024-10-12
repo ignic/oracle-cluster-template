@@ -13,7 +13,6 @@ spec:
         kind: HelmRepository
         name: k8s-gateway
         namespace: flux-system
-  #% if bootstrap_node_lb.enabled %#
   postRenderers:
     - kustomize:
         patches:
@@ -21,7 +20,6 @@ spec:
               kind: Service
             patch: |
               - loadBalancerClass: "io.cilium/node"
-  #% endif %#
   install:
     remediation:
       retries: 3
@@ -36,9 +34,5 @@ spec:
     service:
       type: LoadBalancer
       port: 53
-      #% if not bootstrap_node_lb.enabled %#
-      annotations:
-        lbipam.cilium.io/ips: "#{ bootstrap_cloudflare.gateway_vip }#"
-      #% endif %#
       externalTrafficPolicy: Cluster
     watchedResources: ["Ingress", "Service"]

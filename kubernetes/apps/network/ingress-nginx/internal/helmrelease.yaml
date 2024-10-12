@@ -25,12 +25,7 @@ spec:
     fullnameOverride: ingress-nginx-internal
     controller:
       service:
-      #% if not bootstrap_node_lb.enabled %#
-        annotations:
-          lbipam.cilium.io/ips: "#{ bootstrap_cloudflare.ingress_vip }#"
-      #% else %#
         loadBalancerClass: "io.cilium/node"
-      #% endif %#
         externalTrafficPolicy: Cluster
       ingressClassResource:
         name: internal
@@ -68,11 +63,7 @@ spec:
           namespaceSelector:
             any: true
       extraArgs:
-        #% if bootstrap_cloudflare.acme.production %#
-        default-ssl-certificate: "network/${SECRET_DOMAIN/./-}-production-tls"
-        #% else %#
         default-ssl-certificate: "network/${SECRET_DOMAIN/./-}-staging-tls"
-        #% endif %#
       resources:
         requests:
           cpu: 100m

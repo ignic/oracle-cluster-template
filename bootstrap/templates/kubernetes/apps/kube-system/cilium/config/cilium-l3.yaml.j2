@@ -1,4 +1,4 @@
-#% if bootstrap_bgp.enabled %#
+#% if bootstrap_bgp.enabled and not bootstrap_node_lb.enabled %#
 ---
 # https://docs.cilium.io/en/latest/network/bgp-control-plane/
 apiVersion: cilium.io/v2alpha1

@@ -38,7 +38,7 @@ operator:
   replicas: 1
   rollOutPods: true
 rollOutCiliumPods: true
-routingMode: native
+routingMode: tunnel
 securityContext:
   capabilities:
     ciliumAgent:

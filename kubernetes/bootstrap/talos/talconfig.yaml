@@ -8,9 +8,9 @@ kubernetesVersion: v1.31.1
 clusterName: "homelab"
 endpoint: https://10.10.100.140:6443
 clusterPodNets:
-  - "10.69.0.0/16"
+  - "172.16.0.0/16"
 clusterSvcNets:
-  - "10.96.0.0/16"
+  - "172.17.0.0/16"
 additionalApiServerCertSans: &sans
   - "10.10.100.140"
   - 127.0.0.1 # KubePrism

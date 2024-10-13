@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: hello-world-service
+spec:
+  selector:
+    app: hello-world
+  ports:
+    - protocol: TCP
+      targetPort: 80
+      port: 5000
+  type: LoadBalancer
+  loadBalancerClass: "io.cilium/node"
+

@@ -19,7 +19,9 @@ spec:
           - target:
               kind: Service
             patch: |
-              - loadBalancerClass: "io.cilium/node"
+              - op: add
+                path: /spec/loadBalancerClass
+                value: "io.cilium/node"
   install:
     remediation:
       retries: 3

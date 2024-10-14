@@ -29,7 +29,7 @@ nodes:
     networkInterfaces:
       - interface: "eth0"
         dhcp: true
-        mtu: 1500
+        mtu: 1420
   - hostname: "node-02"
     ipAddress: "10.10.100.141"
     installDisk: "/dev/sda"
@@ -38,7 +38,7 @@ nodes:
     networkInterfaces:
       - interface: "eth0"
         dhcp: true
-        mtu: 1500
+        mtu: 1420
 
 # Global patches
 patches:

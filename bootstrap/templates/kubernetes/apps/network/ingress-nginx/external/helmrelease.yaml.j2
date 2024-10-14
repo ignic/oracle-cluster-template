@@ -35,6 +35,9 @@ spec:
         loadBalancerClass: "io.cilium/node"
       #% endif %#
         externalTrafficPolicy: Cluster
+        ports:
+          http: 8080
+          https: 8443
       ingressClassResource:
         name: external
         default: false

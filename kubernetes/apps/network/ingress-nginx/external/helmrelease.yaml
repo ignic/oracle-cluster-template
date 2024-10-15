@@ -31,9 +31,6 @@ spec:
           external-dns.alpha.kubernetes.io/hostname: "external.${SECRET_DOMAIN}"
         loadBalancerClass: "io.cilium/node"
         externalTrafficPolicy: Cluster
-        ports:
-          http: 8080
-          https: 8443
       ingressClassResource:
         name: external
         default: false

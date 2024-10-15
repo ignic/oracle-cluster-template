@@ -25,6 +25,8 @@ spec:
     fullnameOverride: ingress-nginx-internal
     controller:
       service:
+        annotations:
+          io.cilium.nodeipam/match-node-labels: "kubernetes.io/hostname in (node-02)"
         loadBalancerClass: "io.cilium/node"
         externalTrafficPolicy: Cluster
       ingressClassResource:

@@ -25,12 +25,14 @@ spec:
     fullnameOverride: ingress-nginx-internal
     controller:
       service:
-      #% if not bootstrap_node_lb.enabled %#
         annotations:
+        #% if not bootstrap_node_lb.enabled %#
           lbipam.cilium.io/ips: "#{ bootstrap_cloudflare.ingress_vip }#"
-      #% else %#
+        #% else %#
+          #% set selected_nodes = bootstrap_node_inventory | selectattr('loadbalancer', 'equalto', 'internal') | map(attribute='name') | join(', ') %#
+          io.cilium.nodeipam/match-node-labels: "kubernetes.io/hostname in (#{ selected_nodes }#)"
         loadBalancerClass: "io.cilium/node"
-      #% endif %#
+        #% endif %#
         externalTrafficPolicy: Cluster
       ingressClassResource:
         name: internal

@@ -29,9 +29,11 @@ spec:
       service:
         annotations:
           external-dns.alpha.kubernetes.io/hostname: "external.${SECRET_DOMAIN}"
-        #% if not bootstrap_node_lb.enabled %#
+      #% if not bootstrap_node_lb.enabled %#
           lbipam.cilium.io/ips: "#{ bootstrap_cloudflare.tunnel.ingress_vip }#"
       #% else %#
+          #% set selected_nodes = bootstrap_node_inventory | selectattr('loadbalancer', 'equalto', 'external') | map(attribute='name') | join(', ') %#
+          io.cilium.nodeipam/match-node-labels: "kubernetes.io/hostname in (#{ selected_nodes }#)"
         loadBalancerClass: "io.cilium/node"
       #% endif %#
         externalTrafficPolicy: Cluster

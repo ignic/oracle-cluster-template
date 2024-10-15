@@ -36,5 +36,7 @@ spec:
     service:
       type: LoadBalancer
       port: 53
+      annotations:
+        io.cilium.nodeipam/match-node-labels: "kubernetes.io/hostname in (node-02)"
       externalTrafficPolicy: Cluster
     watchedResources: ["Ingress", "Service"]

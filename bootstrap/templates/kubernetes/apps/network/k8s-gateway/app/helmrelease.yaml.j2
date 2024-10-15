@@ -38,8 +38,11 @@ spec:
     service:
       type: LoadBalancer
       port: 53
-      #% if not bootstrap_node_lb.enabled %#
       annotations:
+      #% if bootstrap_node_lb.enabled %#
+        #% set selected_nodes = bootstrap_node_inventory | selectattr('loadbalancer', 'equalto', 'internal') | map(attribute='name') | join(', ') %#
+        io.cilium.nodeipam/match-node-labels: "kubernetes.io/hostname in (#{ selected_nodes }#)"
+      #% else %#
         lbipam.cilium.io/ips: "#{ bootstrap_cloudflare.gateway_vip }#"
       #% endif %#
       externalTrafficPolicy: Cluster

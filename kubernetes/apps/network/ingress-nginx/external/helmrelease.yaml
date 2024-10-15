@@ -29,6 +29,7 @@ spec:
       service:
         annotations:
           external-dns.alpha.kubernetes.io/hostname: "external.${SECRET_DOMAIN}"
+          io.cilium.nodeipam/match-node-labels: "kubernetes.io/hostname in (node-01)"
         loadBalancerClass: "io.cilium/node"
         externalTrafficPolicy: Cluster
       ingressClassResource:

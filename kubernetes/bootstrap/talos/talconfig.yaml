@@ -24,7 +24,7 @@ nodes:
   - hostname: "node-01"
     ipAddress: "10.10.100.140"
     installDisk: "/dev/sda"
-    talosImageURL: factory.talos.dev/installer/376567988ad370138ad8b2698212367b8edcb69b5fd68c80be1f2ec7d603b4ba
+    talosImageURL: factory.talos.dev/installer/613e1592b2da41ae5e265e8789429f22e121aab91cb4deb6bc3c0b6262961245
     controlPlane: true
     networkInterfaces:
       - interface: "eth0"
@@ -33,7 +33,7 @@ nodes:
   - hostname: "node-02"
     ipAddress: "10.10.100.141"
     installDisk: "/dev/sda"
-    talosImageURL: factory.talos.dev/installer/376567988ad370138ad8b2698212367b8edcb69b5fd68c80be1f2ec7d603b4ba
+    talosImageURL: factory.talos.dev/installer/613e1592b2da41ae5e265e8789429f22e121aab91cb4deb6bc3c0b6262961245
     controlPlane: false
     networkInterfaces:
       - interface: "eth0"
@@ -47,6 +47,7 @@ patches:
   - "@./patches/global/disable-search-domain.yaml"
   - "@./patches/global/hostdns.yaml"
   - "@./patches/global/kubelet.yaml"
+  - "@./patches/global/longhorn.yaml"
   - "@./patches/global/openebs-local.yaml"
   - "@./patches/global/sysctl.yaml"
 

@@ -1,3 +1,6 @@
 ---
 providerRegex: ^(node-01|node-02)$
 bypassDnsResolution: true
+resources:
+  requests:
+    cpu: "10m"

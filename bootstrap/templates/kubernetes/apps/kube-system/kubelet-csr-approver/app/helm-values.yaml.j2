@@ -1,3 +1,6 @@
 ---
 providerRegex: ^(#{ (bootstrap_node_inventory | map(attribute='name') | join('|')) }#)$
 bypassDnsResolution: true
+resources:
+  requests:
+    cpu: "10m"

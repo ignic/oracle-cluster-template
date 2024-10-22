@@ -40,3 +40,5 @@ spec:
         io.cilium.nodeipam/match-node-labels: "kubernetes.io/hostname in (node-02)"
       externalTrafficPolicy: Cluster
     watchedResources: ["Ingress", "Service"]
+    fallthrough:
+      enabled: true

@@ -1,5 +1,5 @@
 ---
-providerRegex: ^(node-01|node-02)$
+providerRegex: ^(node-01|node-02|node-03)$
 bypassDnsResolution: true
 resources:
   requests:

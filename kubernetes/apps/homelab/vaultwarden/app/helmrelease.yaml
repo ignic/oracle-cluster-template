@@ -25,7 +25,7 @@ spec:
       tag: 1.32.2-alpine
     env:
       TZ: Europe/Madrid
-      DOMAIN: https://vault2.ignic.com
+      DOMAIN: "https://vault.${SECRET_DOMAIN}"
       SIGNUPS_ALLOWED: false
       SHOW_PASSWORD_HINT: false
     ingress:
@@ -35,7 +35,7 @@ spec:
           external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN}"
         ingressClassName: external
         hosts:
-          - host: "vault2.${SECRET_DOMAIN}"
+          - host: "vault.${SECRET_DOMAIN}"
             paths:
               - path: /
     persistence:

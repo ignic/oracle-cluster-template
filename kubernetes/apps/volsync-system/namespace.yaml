@@ -4,4 +4,3 @@ kind: Namespace
 metadata:
   name: volsync-system
   labels:
-    kustomize.toolkit.fluxcd.io/prune: disabled

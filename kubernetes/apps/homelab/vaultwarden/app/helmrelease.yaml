@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: vaultwarden
-      version: 0.14.0
+      version: 0.14.1
       sourceRef:
         kind: HelmRepository
         name: gabe565
@@ -21,8 +21,6 @@ spec:
     remediation:
       retries: 3
   values:
-    image:
-      tag: 1.32.3-alpine
     env:
       TZ: Europe/Madrid
       DOMAIN: "https://vault.${SECRET_DOMAIN}"
